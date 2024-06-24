@@ -2,7 +2,7 @@ from datetime import datetime
 from enum import Enum
 from uuid import uuid4
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 from .commons import AddressModel
 
@@ -24,9 +24,9 @@ class TransferTransactionNFT(BaseModel):
     token_id: int
     from_address: AddressModel
     to_address: AddressModel
-    created_at: int = Field(
-        default_factory=lambda: int(datetime.now().replace(microsecond=0))
-    )
+    created_at: datetime = datetime.now().replace(microsecond=0)
+
+    model_config = ConfigDict(json_encoders={AddressModel: str})
 
 
 class TransactionResponse(BaseModel):
