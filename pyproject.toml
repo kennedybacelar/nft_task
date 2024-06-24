@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "task-nft"
+version = "0.1.0"
+description = ""
+authors = ["Kennedy Bacelar <kennedybacelar@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+sqlalchemy = "^2.0.31"
+aiohttp = "^3.9.5"
+aio-pika = "^9.4.1"
+pydantic = "^2.7.4"
+
+
+[tool.poetry.group.extras.dependencies]
+black = "^24.4.2"
+isort = "^5.13.2"
+flake8 = "^7.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
