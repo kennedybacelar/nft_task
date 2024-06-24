@@ -20,7 +20,7 @@ class TransactionStatus(str, Enum):
 class TransferTransactionNFT(BaseModel):
     transaction_id: str = Field(default_factory=lambda: str(uuid4()))
     event_type: TransactionType = TransactionType.transfer
-    transaction_status: TransactionStatus
+    transaction_status: TransactionStatus = TransactionStatus.pending
     token_id: int
     from_address: AddressModel
     to_address: AddressModel
