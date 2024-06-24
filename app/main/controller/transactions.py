@@ -10,5 +10,5 @@ async def process_transfer_controller():
         queue_name = "transaction_events"
         await channel.declare_queue(queue_name, durable=True)
         await channel.default_exchange.publish(
-            aio_pika.Message(body=b"Hello from RabbitMQ!"), routing_key="my_queue"
+            aio_pika.Message(body=b"Hello from RabbitMQ!"), routing_key=queue_name
         )
