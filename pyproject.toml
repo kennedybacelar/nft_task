@@ -11,6 +11,8 @@ sqlalchemy = "^2.0.31"
 aiohttp = "^3.9.5"
 aio-pika = "^9.4.1"
 pydantic = "^2.7.4"
+aiohttp-utils = "^3.2.1"
+asyncpg = "^0.29.0"
 
 
 [tool.poetry.group.extras.dependencies]

@@ -1,33 +1,8 @@
-from contextlib import asynccontextmanager
+from aiohttp import web
 
-from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
-from sqlalchemy.orm import sessionmaker
+from app.main.router.transactions import process_transfer
 
-# DATABASE_URL = os.getenv("DATABASE_URL")
-DATABASE_URL = (
-    "postgresql+asyncpg://username:password@localhost:5433/qorpo_database_test"
-)
-
-engine = create_async_engine(
-    DATABASE_URL,
-    echo=True,
-    future=True,
-)
-
-
-def async_session_generator():
-    return sessionmaker(engine, class_=AsyncSession)
-
-
-@asynccontextmanager
-async def get_session():
-    try:
-        async_session = async_session_generator()
-
-        async with async_session() as session:
-            yield session
-    except:
-        await session.rollback()
-        raise
-    finally:
-        await session.close()
+def create_app():
+    app = web.Application()
+    app.router.add_post("/asset/transfer", process_transfer)
+    return app
