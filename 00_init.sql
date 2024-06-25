@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS asset_type (
     FOREIGN KEY (collection_id) REFERENCES collection(collection_id)
 );
 
-CREATE TABLE IF NOT EXISTS nft_asset (
+CREATE TABLE IF NOT EXISTS asset (
     asset_id UUID PRIMARY KEY default gen_random_uuid(),
     asset_type_id UUID NOT NULL,
     user_wallet varchar(256) NOT NULL,

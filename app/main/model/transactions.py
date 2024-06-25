@@ -21,6 +21,7 @@ class TransferTransactionNFT(BaseModel):
     transaction_id: str = Field(default_factory=lambda: str(uuid4()))
     blockchain_symbol: BlockchainType
     event_type: TransactionType = TransactionType.transfer
+    delta: float = Field(default=1.0, description="The amount of NFT to transfer. Considered as 1 NFT for testing.")
     transaction_status: TransactionStatus = TransactionStatus.pending
     token_id: int
     from_address: AddressModel
@@ -34,3 +35,5 @@ class TransactionResponse(BaseModel):
     transaction_id: str
     event_type: TransactionType
     transaction_status: TransactionStatus
+    sender_count: float
+    receiver_count: float

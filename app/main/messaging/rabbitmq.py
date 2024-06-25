@@ -1,5 +1,3 @@
-# app/main/messaging/rabbitmq.py
-
 from aio_pika import Connection, connect_robust
 
 # RabbitMQ URL
