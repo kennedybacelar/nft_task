@@ -33,17 +33,12 @@ Ensure that both Poetry and Docker are installed on your system before proceedin
 
 You can run the API in multiple ways:
 
-1. Using Gunicorn:
-
-    ```bash
-    gunicorn -c gunicorn_config.py app.main:create_app()
-
-2. As a Python Module:
+1. As a Python Module:
 
     ```bash
     python -m run
 
-3. Using Docker:
+2. Using Docker:
 
     ```bash
     docker-compose up
