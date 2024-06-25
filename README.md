@@ -51,10 +51,13 @@ Manual testing
 
 for example:
 
+```bash
 curl -X POST http://localhost:5000/asset/transfer -H "Content-Type: application/json" -d '{"token_id": 123456, "blockchain_symbol": "bnb", "from_address": "0x1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7aaabbb1", "to_address": "0x1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7cccddd2"}'
+```
 
 ### Response type
 
+```json
 {
   "TransactionResponse": {
     "transaction_id": "string",
