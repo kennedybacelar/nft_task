@@ -4,7 +4,7 @@ from uuid import uuid4
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from .commons import AddressModel
+from .commons import AddressModel, BlockchainType
 
 
 class TransactionType(str, Enum):
@@ -19,6 +19,7 @@ class TransactionStatus(str, Enum):
 
 class TransferTransactionNFT(BaseModel):
     transaction_id: str = Field(default_factory=lambda: str(uuid4()))
+    blockchain_symbol: BlockchainType
     event_type: TransactionType = TransactionType.transfer
     transaction_status: TransactionStatus = TransactionStatus.pending
     token_id: int

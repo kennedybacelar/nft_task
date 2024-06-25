@@ -19,14 +19,15 @@ services:
       - rabbitmq
 
   db:
-    image: postgres:13
+    image: postgres:latest
     container_name: api_db
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=mydatabase
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - ./00_init.sql:/docker-entrypoint-initdb.d/00_init.sql
+      - ./01_test_data_populate.sql:/docker-entrypoint-initdb.d/01_test_data_populate.sql
     restart: always
 
   rabbitmq:

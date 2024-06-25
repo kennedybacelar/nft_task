@@ -1,7 +1,7 @@
 import json
 
-from sqlmodel.ext.asyncio.session import AsyncSession
 import aio_pika
+from sqlmodel.ext.asyncio.session import AsyncSession
 
 from app.main.messaging.rabbitmq import get_rabbitmq_connection
 from app.main.model.transactions import TransferTransactionNFT
@@ -26,9 +26,8 @@ async def publish_message(transaction: TransferTransactionNFT):
         message_body = _formatting_message(transaction)
 
         await channel.declare_queue(queue_name, durable=True)
-        await channel.default_exchange.publish(
-            aio_pika.Message(body=message_body.encode()), routing_key=queue_name
-        )
+        await channel.default_exchange.publish(aio_pika.Message(body=message_body.encode()), routing_key=queue_name)
+
 
 async def processing_transfer_db_operations(transaction: TransferTransactionNFT):
     async with AsyncSession() as session:
