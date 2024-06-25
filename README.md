@@ -19,7 +19,7 @@ Ensure that both Poetry and Docker are installed on your system before proceedin
 2. Navigate to the project directory:
 
     ```bash
-    cd qorpo-crypto-api
+    cd nft_task
     
 3. Install dependencies using Poetry:
 
